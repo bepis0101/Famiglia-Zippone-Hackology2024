@@ -88,7 +88,8 @@ function App() {
       )}
       <div>
         {profit ? <div>Szacowany przychód: {formatNumber(profit)}</div> : null}
-        {profit ? <div>Szacowany zysk: {formatNumber(profit - savedBudget)}</div> : null}
+        {profit ? <div className={profit - savedBudget < 0 ? "red" : ""}>Szacowany zysk: {formatNumber(profit - savedBudget)}</div> : null}
+        {profit ? <div>Ratio: {Math.round((profit / (profit - savedBudget)) * 100) / 100}</div> : null}
       </div>
 
       <div>

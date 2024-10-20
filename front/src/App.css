@@ -58,3 +58,7 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.red {
+  color: rgb(188, 5, 5);
+}
