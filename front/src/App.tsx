@@ -25,16 +25,19 @@ function App() {
       city_name: IPickedCity.city_name,
       marketing: IPickedCity.marketing,
     });
-    // const response = await fetch("http://localhost:3000/profit", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(IPickedCity),
-    // });
-    // const data = await response.json();
+
+    const response = await fetch("http://127.0.0.1:5000/predict", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(IPickedCity),
+    });
+    const data = await response.json().catch((err) => {console.log(err)});
+    console.log(data)
     // return data;
-    setProfit(budget * 0.1);
+
+    setProfit(data.prediction[0][0]);
     setLoading(false);
   }
 
@@ -46,7 +49,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="summary">
+      <div className="header">
         <div>
           {pickedCity ? <>Wybrane miasto: {pickedCity}</> : "Wybierz miasto"}
         </div>

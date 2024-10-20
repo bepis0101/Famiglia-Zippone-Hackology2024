@@ -32,7 +32,7 @@ export interface Miasto {
       procentWyksztalcenieWyzsze: 46.0
     },
     {
-      nazwa: "Kraków",
+      nazwa: "Krakow",
       koordynatX: 50.0647,
       koordynatY: 19.945,
       populacja: 779115,
@@ -45,7 +45,7 @@ export interface Miasto {
       procentWyksztalcenieWyzsze: 43.5
     },
     {
-      nazwa: "Łódź",
+      nazwa: "Lodz",
       koordynatX: 51.7592,
       koordynatY: 19.458,
       populacja: 682679,
@@ -58,7 +58,7 @@ export interface Miasto {
       procentWyksztalcenieWyzsze: 38.4
     },
     {
-      nazwa: "Wrocław",
+      nazwa: "Wroclaw",
       koordynatX: 51.1079,
       koordynatY: 17.0385,
       populacja: 642869,
@@ -71,7 +71,7 @@ export interface Miasto {
       procentWyksztalcenieWyzsze: 44.1
     },
     {
-      nazwa: "Poznań",
+      nazwa: "Poznan",
       koordynatX: 52.4064,
       koordynatY: 16.9252,
       populacja: 532048,
@@ -84,7 +84,7 @@ export interface Miasto {
       procentWyksztalcenieWyzsze: 43.0
     },
     {
-      nazwa: "Gdańsk",
+      nazwa: "Gdansk",
       koordynatX: 54.352,
       koordynatY: 18.6466,
       populacja: 470907,
@@ -149,7 +149,7 @@ export interface Miasto {
       procentWyksztalcenieWyzsze: 40.7
     },
     {
-      nazwa: "Białystok",
+      nazwa: "Bialystok",
       koordynatX: 53.1325,
       koordynatY: 23.1688,
       populacja: 297288,
@@ -175,7 +175,7 @@ export interface Miasto {
       procentWyksztalcenieWyzsze: 41.0
     },
     {
-      nazwa: "Częstochowa",
+      nazwa: "Czestochowa",
       koordynatX: 50.811,
       koordynatY: 19.1203,
       populacja: 218727,
@@ -214,7 +214,7 @@ export interface Miasto {
       procentWyksztalcenieWyzsze: 36.0
     },
     {
-      nazwa: "Toruń",
+      nazwa: "Torun",
       koordynatX: 53.0138,
       koordynatY: 18.5984,
       populacja: 196935,
