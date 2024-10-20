@@ -46,7 +46,11 @@ function App() {
   }
 
   function formatNumber(num: number): string {
-    return num.toLocaleString("pl-PL") + " PLN";
+    return num.toLocaleString("pl-PL");
+  }
+
+  function roundNumber(num: number): string {
+    return (Math.round(num * 100) / 100).toFixed(2);
   }
 
   // 52.068023, 19.476712
@@ -87,14 +91,16 @@ function App() {
         </Button>
       )}
       <div>
-        {profit ? <div>Szacowany przychód: {formatNumber(profit)}</div> : null}
-        {profit ? <div className={profit - savedBudget < 0 ? "red" : ""}>Szacowany zysk: {formatNumber(profit - savedBudget)}</div> : null}
-        {profit ? <div>Ratio: {Math.round((profit / (profit - savedBudget)) * 100) / 100}</div> : null}
+        {profit ? <div>Szacowany przychód: {formatNumber(profit)} PLN</div> : null}
+        {profit ? (
+          <div className={profit - savedBudget < 0 ? "red" : ""}>
+            Szacowany zysk: {formatNumber(profit - savedBudget)} PLN
+          </div>
+        ) : null}
+        {profit ? <div>Ratio: {roundNumber(profit / savedBudget)}</div> : null}
       </div>
 
-      <div>
-        
-      </div>
+      <div></div>
       <div>
         <Table.Root variant="surface">
           <Table.Header>
@@ -104,14 +110,12 @@ function App() {
               <Table.ColumnHeaderCell>Kord. Y</Table.ColumnHeaderCell>
               <Table.ColumnHeaderCell>Populacja</Table.ColumnHeaderCell>
               <Table.ColumnHeaderCell>Powierzchnia</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell>% dzieci</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell>% młodzieży</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell>% dorośli</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell>% emeryci</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell>% mężczyźni</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell>
-                % wykształcenie wyższe
-              </Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell>Dzieci (%)</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell>Młodzież (%)</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell>Dorośli (%)</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell>Emeryci (%)</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell>Mężczyźni (%)</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell>Wykształcenie wyższe (%)</Table.ColumnHeaderCell>
               <Table.ColumnHeaderCell>Akcja</Table.ColumnHeaderCell>
             </Table.Row>
           </Table.Header>
@@ -126,16 +130,16 @@ function App() {
                 }}
               >
                 <Table.RowHeaderCell>{miasto.nazwa}</Table.RowHeaderCell>
-                <Table.Cell>{miasto.koordynatX}</Table.Cell>
-                <Table.Cell>{miasto.koordynatY}</Table.Cell>
-                <Table.Cell>{miasto.populacja}</Table.Cell>
-                <Table.Cell>{miasto.powierzchnia}</Table.Cell>
-                <Table.Cell>{miasto.procentDzieci}</Table.Cell>
-                <Table.Cell>{miasto.procentMlodziez}</Table.Cell>
-                <Table.Cell>{miasto.procentDorosli}</Table.Cell>
-                <Table.Cell>{miasto.procentEmeryci}</Table.Cell>
-                <Table.Cell>{miasto.procentMezczyzni}</Table.Cell>
-                <Table.Cell>{miasto.procentWyksztalcenieWyzsze}</Table.Cell>
+                <Table.Cell>{roundNumber(miasto.koordynatX)}</Table.Cell>
+                <Table.Cell>{roundNumber(miasto.koordynatY)}</Table.Cell>
+                <Table.Cell>{roundNumber(miasto.populacja)}</Table.Cell>
+                <Table.Cell>{roundNumber(miasto.powierzchnia)}</Table.Cell>
+                <Table.Cell>{roundNumber(miasto.procentDzieci)}</Table.Cell>
+                <Table.Cell>{roundNumber(miasto.procentMlodziez)}</Table.Cell>
+                <Table.Cell>{roundNumber(miasto.procentDorosli)}</Table.Cell>
+                <Table.Cell>{roundNumber(miasto.procentEmeryci)}</Table.Cell>
+                <Table.Cell>{roundNumber(miasto.procentMezczyzni)}</Table.Cell>
+                <Table.Cell>{roundNumber(miasto.procentWyksztalcenieWyzsze)}</Table.Cell>
                 <Table.Cell>
                   {pickedCity === miasto.nazwa ? (
                     <Button size="2" variant="soft" disabled>
