@@ -40,7 +40,7 @@ function App() {
     console.log(data);
     // return data;
 
-    setProfit(data.prediction[0][0]);
+    setProfit(data.prediction);
     setSavedBudget(budget);
     setLoading(false);
   }
