@@ -7,6 +7,7 @@ import { useState } from "react";
 function App() {
   const [pickedCity, setCity] = useState<string | undefined>();
   const [budget, setBudget] = useState<number>(0);
+  const [savedBudget, setSavedBudget] = useState<number>(0);
   const [isLoading, setLoading] = useState<Boolean>(false);
   const [profit, setProfit] = useState<number>(0);
 
@@ -33,11 +34,14 @@ function App() {
       },
       body: JSON.stringify(IPickedCity),
     });
-    const data = await response.json().catch((err) => {console.log(err)});
-    console.log(data)
+    const data = await response.json().catch((err) => {
+      console.log(err);
+    });
+    console.log(data);
     // return data;
 
-    setProfit(data.prediction);
+    setProfit(data.prediction[0][0]);
+    setSavedBudget(budget);
     setLoading(false);
   }
 
@@ -49,7 +53,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="header">
+      <div className="summary">
         <div>
           {pickedCity ? <>Wybrane miasto: {pickedCity}</> : "Wybierz miasto"}
         </div>
@@ -78,22 +82,18 @@ function App() {
           Oblicz szacowany zysk
         </Button>
       ) : (
-        <Button
-          size="2"
-          variant="soft"
-          disabled
-        >
+        <Button size="2" variant="soft" disabled>
           Wybierz miasto
         </Button>
       )}
       <div>
-        {profit ? (
-          <div>
-            Szacowany zysk: {formatNumber(profit)}
-          </div>
-        ) : null}
+        {profit ? <div>Szacowany przychód: {formatNumber(profit)}</div> : null}
+        {profit ? <div>Szacowany zysk: {formatNumber(profit - savedBudget)}</div> : null}
       </div>
 
+      <div>
+        
+      </div>
       <div>
         <Table.Root variant="surface">
           <Table.Header>
